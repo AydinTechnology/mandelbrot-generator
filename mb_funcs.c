@@ -10,7 +10,7 @@ int in_the_set_checker(double a, double b, int count) {
         double im_squared = (im * im);
 
         re = re_squared - im_squared + a;
-        im = 2 * re_old * im + b;
+        im = (re_old + re_old) * im + b;            //we have 2abi or 2 * Re * Im which can be rewritten more optimally as (Re + Re) * Im (one less multiplication)
 
         double length = re_squared + im_squared;    //instead of using the pythagorean theorem which involves taking the square root (expensive on today's hardware) and compare to 2,
         if(length > 4) {                            //we can just compare Re(z)^2 + Im(z)^2 against 4
